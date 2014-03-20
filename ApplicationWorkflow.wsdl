@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="EventService" targetNamespace="http://idecs.atc.ru/orderprocessing/ws/eventservice/v25/" xmlns:ev="http://idecs.atc.ru/orderprocessing/ws/eventservice/v25/" xmlns:smev="http://smev.gosuslugi.ru/rev120315" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+<xsd:schema targetNamespace="http://idecs.atc.ru/orderprocessing/ws/eventservice/v25/" xmlns:ev="http://idecs.atc.ru/orderprocessing/ws/eventservice/v25/" xmlns:smev="http://smev.gosuslugi.ru/rev120315" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://smev.gosuslugi.ru/rev120315" schemaLocation="http://u00nlb02/orderprocessing/ws/EventServiceV25?xsd=event-service-v25.xsd"/>
+
+
+
+            <xsd:element name="pushEventRequest" type="smev:PushEventRequest"/>
+            <xsd:element name="pushEventResponse" type="smev:PushEventResponse"/>
+
+        </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="pushEventResponse">
+    <wsdl:part element="ev:pushEventResponse" name="pushEventResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pushEventRequest">
+    <wsdl:part element="smev:Header" name="smevHeader">
+    </wsdl:part>
+    <wsdl:part element="ev:pushEventRequest" name="pushEventRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EventService">
+    <wsdl:operation name="pushEvent">
+      <wsdl:input message="ev:pushEventRequest">
+    </wsdl:input>
+      <wsdl:output message="ev:pushEventResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EventServiceBinding" type="ev:EventService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="pushEvent">
+      <soap:operation soapAction="pushEvent" style="document"/>
+      <wsdl:input>
+        <soap:header message="ev:pushEventRequest" part="smevHeader" use="literal" wsdl:required="false">
+        </soap:header>
+        <soap:body parts="pushEventRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EventService">
+    <wsdl:port binding="ev:EventServiceBinding" name="EventService">
+      <soap:address location="http://u00nlb02/orderprocessing/ws/EventServiceV25"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

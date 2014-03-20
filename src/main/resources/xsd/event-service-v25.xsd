@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?><schema elementFormDefault="qualified" targetNamespace="http://smev.gosuslugi.ru/rev120315" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:e="http://idecs.atc.ru/orderprocessing/ws/event/" xmlns:smev="http://smev.gosuslugi.ru/rev120315">
+
+    <import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="http://u00nlb02/orderprocessing/ws/EventServiceV25?xsd=../../types/xmldsig-core-schema.xsd"/>
+    <import namespace="http://idecs.atc.ru/orderprocessing/ws/event/" schemaLocation="http://u00nlb02/orderprocessing/ws/EventServiceV25?xsd=../../types/event.xsd"/>
+
+    <include schemaLocation="http://u00nlb02/orderprocessing/ws/EventServiceV25?xsd=../../types/smev.gosuslugi.ru.rev120315.xsd"/>
+
+    <complexType name="PushEventRequest">
+        <sequence>
+            <element ref="smev:Message"/>
+            <element name="MessageData" type="smev:EventMessageDataType"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="PushEventResponse">
+        <sequence>
+            <element ref="smev:Message"/>
+            <element name="MessageData" type="smev:EventResponseMessageDataType"/>
+        </sequence>
+    </complexType>
+
+
+    <complexType name="EventMessageDataType">
+        <sequence>
+            <element name="AppData" type="smev:EventAppDataType"/>
+            <element minOccurs="0" ref="smev:AppDocument"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="EventAppDataType">
+        <complexContent>
+            <extension base="e:EventObject">
+                <sequence>
+                    <element ref="ds:Signature"/>
+                    <element minOccurs="1" ref="smev:error"/>
+                    <any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="EventResponseMessageDataType">
+        <sequence>
+            <element name="AppData" type="smev:EventResponseAppDataType"/>
+            <element minOccurs="0" ref="smev:AppDocument"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="EventResponseAppDataType">
+        <sequence>
+            <element ref="ds:Signature"/>
+            <element minOccurs="1" ref="smev:error"/>
+            <any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+        </sequence>
+    </complexType>
+
+
+</schema>
