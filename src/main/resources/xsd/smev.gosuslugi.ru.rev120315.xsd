@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?><xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://smev.gosuslugi.ru/rev120315" version="2.5.6" xmlns:smev="http://smev.gosuslugi.ru/rev120315" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<xs:import namespace="http://www.w3.org/2004/08/xop/include" schemaLocation="http://u00nlb02/orderprocessing/ws/EventServiceV25?xsd=include.xsd"/>
+	<xs:import namespace="http://idecs.atc.ru/orderprocessing/ws/fileDescription/" schemaLocation="http://u00nlb02/orderprocessing/ws/EventServiceV25?xsd=fileDescription.xsd"/>
 	<xs:element name="Header" type="smev:HeaderType">
 		<xs:annotation>
 			<xs:documentation>Служебный загловок СМЭВ</xs:documentation>

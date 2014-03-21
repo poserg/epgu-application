@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema targetNamespace="http://idecs.atc.ru/orderprocessing/ws/fileDescription/" xmlns:e="http://idecs.atc.ru/orderprocessing/ws/event/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:complexType name="FileDescription">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Имя файла в архиве (с расширением)
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="code" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Код файла
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="contentType" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        тип файла (например: application/xml )
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="hash" type="xsd:string" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        hash файла
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="archiveDescription">
+        <xsd:complexType>
+            <xsd:annotation>
+                <xsd:documentation>
+                    Описание файлов архива
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:sequence>
+                <xsd:element name="fileDescriptions" type="FileDescription" maxOccurs="unbounded">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            Описание файлов
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
