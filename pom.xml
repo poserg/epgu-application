@@ -21,7 +21,7 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>EPGUApplication</finalName>
+    <finalName>orderprocessing</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

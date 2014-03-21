@@ -12,6 +12,6 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>FileDownloader</servlet-name>
-  	<url-pattern>/orderprocessing/ws</url-pattern>
+  	<url-pattern>/ws/EventServiceV25</url-pattern>
   </servlet-mapping>
 </web-app>
